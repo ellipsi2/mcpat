@@ -1,7 +1,7 @@
 import std/[
   httpclient, tempfiles, os, strformat, tables, options,
-  uri, strutils, terminal, files, dirs,
-  asyncdispatch, times, cmdline
+  uri, strutils, terminal,
+  asyncdispatch, times
 ]
 import nigui
 import nigui/msgbox
@@ -52,7 +52,7 @@ let headers = newHttpHeaders(@[
 ]);
 var client = newHttpClient(headers = headers, maxRedirects = 0)
 
-var updateData = client.getContent("https://raw.githubusercontent.com/ellipsi2/Gravitas2/main/update.info.json")
+var updateData = client.getContent("https://raw.githubusercontent.com/ellipsi2/mcpat-update/main/update.info.json")
 let data = updateData.fromJson(Patch)
 
 proc isEmpty[T](s: seq[T]): bool =
